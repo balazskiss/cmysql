@@ -1,4 +1,4 @@
-// swift-tools-version:3.1
+// swift-tools-version:4.0
 
 import PackageDescription
 
@@ -6,7 +6,14 @@ let package = Package(
     name: "CMySQL",
     pkgConfig: "mysqlclient",
     providers: [
-        .Brew("mysql"),
-        .Apt("libmysqlclient-dev")
+        .brew(["mysql"]),
+        .apt(["libmysqlclient-dev"])
+    ],
+    products: [
+    	.library(name: "CMySQL", targets: ["CMySQL"])
+    ],
+    dependencies: [],
+    targets: [
+    	.target(name: "CMySQL", dependencies: [])
     ]
 )
